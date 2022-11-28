@@ -1,0 +1,122 @@
+// ! breakpoints
+$breakpoints: ("mobile": 250px, "mini-tablet": 481px, "tablet": 768px, "laptop": 1025px, "tv": 1281px);
+
+@mixin mobile {
+    @media (min-width: map-get($breakpoints, "mobile")) {
+        @content
+    }
+}
+
+;
+
+@mixin mini-tablet {
+    @media (min-width: map-get($breakpoints, "mini-tablet")) {
+        @content
+    }
+}
+
+;
+
+@mixin tablet {
+    @media (min-width: map-get($breakpoints, "tablet")) {
+        @content
+    }
+}
+
+;
+
+@mixin laptop {
+    @media (min-width: map-get($breakpoints, "laptop")) {
+        @content
+    }
+}
+
+;
+
+@mixin tv {
+    @media (min-width: map-get($breakpoints, "tv")) {
+        @content
+    }
+}
+
+;
+
+@mixin breakpoint($bp:0) {
+    @media (min-width: $bp) {
+        @content
+    }
+}
+
+;
+
+* {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+
+    @include mobile {
+        background-color: rgb(59, 232, 176);
+    }
+
+    @include mini-tablet {
+        background-color: rgb(26, 175, 208);
+    }
+
+    @include tablet {
+        background-color: rgb(106, 103, 206);
+    }
+
+    @include laptop {
+        background-color: rgb(255, 185, 0);
+    }
+
+    @include tv {
+        background-color: rgb(252, 99, 107);
+    }
+
+    .screen {
+        font-size: 1rem;
+        text-transform: uppercase;
+
+        &::after {
+            content: "your screen width is smaller than recognized";
+        }
+
+        @include mobile {
+            &::after {
+                content: "mobile view";
+            }
+        }
+
+        @include mini-tablet {
+            &::after {
+                content: "mini-tablet view";
+            }
+        }
+
+        @include tablet {
+            &::after {
+                content: "tablet view";
+            }
+        }
+
+        @include laptop {
+            &::after {
+                content: "laptop view";
+            }
+        }
+
+        @include tv {
+            &::after {
+                content: "tv view";
+            }
+        }
+    }
+}
