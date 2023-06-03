@@ -1,13 +1,13 @@
-// ! breakpoints
+// ! breakpoints ###########################
 $breakpoints: ("mobile": 250px, "mini-tablet": 481px, "tablet": 768px, "laptop": 1025px, "tv": 1281px);
-
 @mixin mobile {
     @media (min-width: map-get($breakpoints, "mobile")) {
         @content
     }
 }
 
-;
+$mobile:map-get($breakpoints, "mobile");
+// <============= breakpoint ==============>
 
 @mixin mini-tablet {
     @media (min-width: map-get($breakpoints, "mini-tablet")) {
@@ -15,7 +15,8 @@ $breakpoints: ("mobile": 250px, "mini-tablet": 481px, "tablet": 768px, "laptop":
     }
 }
 
-;
+$mini-tablet:map-get($breakpoints, "mini-tablet");
+// <============= breakpoint ==============>
 
 @mixin tablet {
     @media (min-width: map-get($breakpoints, "tablet")) {
@@ -23,7 +24,8 @@ $breakpoints: ("mobile": 250px, "mini-tablet": 481px, "tablet": 768px, "laptop":
     }
 }
 
-;
+$tablet:map-get($breakpoints, "tablet");
+// <============= breakpoint ==============>
 
 @mixin laptop {
     @media (min-width: map-get($breakpoints, "laptop")) {
@@ -31,7 +33,8 @@ $breakpoints: ("mobile": 250px, "mini-tablet": 481px, "tablet": 768px, "laptop":
     }
 }
 
-;
+$laptop:map-get($breakpoints, "laptop");
+// <============= breakpoint ==============>
 
 @mixin tv {
     @media (min-width: map-get($breakpoints, "tv")) {
@@ -39,9 +42,18 @@ $breakpoints: ("mobile": 250px, "mini-tablet": 481px, "tablet": 768px, "laptop":
     }
 }
 
+$tv:map-get($breakpoints, "tv");
+// <============= breakpoint ==============>
+
+@mixin breakpoint-max($bp:0) {
+    @media (max-width: $bp) {
+        @content
+    }
+}
+
 ;
 
-@mixin breakpoint($bp:0) {
+@mixin breakpoint-min($bp:0) {
     @media (min-width: $bp) {
         @content
     }
