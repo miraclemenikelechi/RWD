@@ -4,66 +4,69 @@
   box-sizing: border-box;
 }
 
-body {
+html {
+  font-size: 1.1111111111vw;
+}
+html body {
   display: flex;
   height: 100vh;
   align-items: center;
   justify-content: center;
 }
 @media (min-width: 250px) {
-  body {
+  html body {
     background-color: rgb(59, 232, 176);
   }
 }
 @media (min-width: 481px) {
-  body {
+  html body {
     background-color: rgb(26, 175, 208);
   }
 }
 @media (min-width: 768px) {
-  body {
+  html body {
     background-color: rgb(106, 103, 206);
   }
 }
 @media (min-width: 1025px) {
-  body {
+  html body {
     background-color: rgb(255, 185, 0);
   }
 }
 @media (min-width: 1281px) {
-  body {
+  html body {
     background-color: rgb(252, 99, 107);
   }
 }
-body .screen {
+html body .screen {
   font-size: 1rem;
   text-transform: uppercase;
 }
-body .screen::after {
+html body .screen::after {
   content: "your screen width is smaller than recognized";
 }
 @media (min-width: 250px) {
-  body .screen::after {
+  html body .screen::after {
     content: "mobile view";
   }
 }
 @media (min-width: 481px) {
-  body .screen::after {
+  html body .screen::after {
     content: "mini-tablet view";
   }
 }
 @media (min-width: 768px) {
-  body .screen::after {
+  html body .screen::after {
     content: "tablet view";
   }
 }
 @media (min-width: 1025px) {
-  body .screen::after {
+  html body .screen::after {
     content: "laptop view";
   }
 }
 @media (min-width: 1281px) {
-  body .screen::after {
+  html body .screen::after {
     content: "tv view";
   }
 }/*# sourceMappingURL=index.css.map */
