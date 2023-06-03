@@ -1,12 +1,19 @@
 // ! breakpoints ###########################
-$breakpoints: ("mobile": 250px, "mini-tablet": 481px, "tablet": 768px, "laptop": 1025px, "tv": 1281px);
+$breakpoints: (
+    "mobile": 250px,
+    "mini-tablet": 481px,
+    "tablet": 768px,
+    "laptop": 1025px,
+    "tv": 1281px
+);
+
 @mixin mobile {
     @media (min-width: map-get($breakpoints, "mobile")) {
         @content
     }
 }
 
-$mobile:map-get($breakpoints, "mobile");
+$mobile: map-get($breakpoints, "mobile");
 // <============= breakpoint ==============>
 
 @mixin mini-tablet {
@@ -15,7 +22,7 @@ $mobile:map-get($breakpoints, "mobile");
     }
 }
 
-$mini-tablet:map-get($breakpoints, "mini-tablet");
+$mini-tablet: map-get($breakpoints, "mini-tablet");
 // <============= breakpoint ==============>
 
 @mixin tablet {
@@ -24,7 +31,7 @@ $mini-tablet:map-get($breakpoints, "mini-tablet");
     }
 }
 
-$tablet:map-get($breakpoints, "tablet");
+$tablet: map-get($breakpoints, "tablet");
 // <============= breakpoint ==============>
 
 @mixin laptop {
@@ -33,7 +40,7 @@ $tablet:map-get($breakpoints, "tablet");
     }
 }
 
-$laptop:map-get($breakpoints, "laptop");
+$laptop: map-get($breakpoints, "laptop");
 // <============= breakpoint ==============>
 
 @mixin tv {
@@ -42,10 +49,10 @@ $laptop:map-get($breakpoints, "laptop");
     }
 }
 
-$tv:map-get($breakpoints, "tv");
+$tv: map-get($breakpoints, "tv");
 // <============= breakpoint ==============>
 
-@mixin breakpoint-max($bp:0) {
+@mixin breakpoint-max($bp: 0) {
     @media (max-width: $bp) {
         @content
     }
@@ -53,7 +60,7 @@ $tv:map-get($breakpoints, "tv");
 
 ;
 
-@mixin breakpoint-min($bp:0) {
+@mixin breakpoint-min($bp: 0) {
     @media (min-width: $bp) {
         @content
     }
@@ -67,67 +74,71 @@ $tv:map-get($breakpoints, "tv");
     box-sizing: border-box;
 }
 
-body {
-    display: flex;
-    height: 100vh;
-    align-items: center;
-    justify-content: center;
+html {
+    font-size: calc(100vw / 1440 * 16);
 
-    @include mobile {
-        background-color: rgb(59, 232, 176);
-    }
-
-    @include mini-tablet {
-        background-color: rgb(26, 175, 208);
-    }
-
-    @include tablet {
-        background-color: rgb(106, 103, 206);
-    }
-
-    @include laptop {
-        background-color: rgb(255, 185, 0);
-    }
-
-    @include tv {
-        background-color: rgb(252, 99, 107);
-    }
-
-    .screen {
-        font-size: 1rem;
-        text-transform: uppercase;
-
-        &::after {
-            content: "your screen width is smaller than recognized";
-        }
+    body {
+        display: flex;
+        height: 100vh;
+        align-items: center;
+        justify-content: center;
 
         @include mobile {
-            &::after {
-                content: "mobile view";
-            }
+            background-color: rgb(59, 232, 176);
         }
 
         @include mini-tablet {
-            &::after {
-                content: "mini-tablet view";
-            }
+            background-color: rgb(26, 175, 208);
         }
 
         @include tablet {
-            &::after {
-                content: "tablet view";
-            }
+            background-color: rgb(106, 103, 206);
         }
 
         @include laptop {
-            &::after {
-                content: "laptop view";
-            }
+            background-color: rgb(255, 185, 0);
         }
 
         @include tv {
+            background-color: rgb(252, 99, 107);
+        }
+
+        .screen {
+            font-size: 1rem;
+            text-transform: uppercase;
+
             &::after {
-                content: "tv view";
+                content: "your screen width is smaller than recognized";
+            }
+
+            @include mobile {
+                &::after {
+                    content: "mobile view";
+                }
+            }
+
+            @include mini-tablet {
+                &::after {
+                    content: "mini-tablet view";
+                }
+            }
+
+            @include tablet {
+                &::after {
+                    content: "tablet view";
+                }
+            }
+
+            @include laptop {
+                &::after {
+                    content: "laptop view";
+                }
+            }
+
+            @include tv {
+                &::after {
+                    content: "tv view";
+                }
             }
         }
     }
